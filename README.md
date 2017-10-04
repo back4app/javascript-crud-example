@@ -1,4 +1,4 @@
-# Android Basic User Registration Example App
+# Javascript Quickstart Example App
 
 Welcome to Back4App's GitHub!
 

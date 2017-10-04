@@ -12,8 +12,6 @@
   <link href="assets/favicon.png" rel="shortcut icon">
 
   <link rel="stylesheet" href="styles/main.css">
-  <script src="/docs/assets/js/main.js"></script>
-
 </head>
 
 <body>
@@ -23,31 +21,30 @@
     <header>
       <img src="assets/page-header.png" />
     </header>
-
-    <br>
-    <br>
-    <br>
     <br>
     <div id="myapp">
-      <h2>Registering Users</h2>
-      <input type="text" id="input_name" name="input_name" placeholder="Name" size="40"></input>
-      <input type="text" id="input_age" name="input_age" placeholder="Age" size="10"></input>
-      <br>
-      <br>
-      <br>
+      <h2>Registering Pets</h2>
+      <h3>Choose the action you want</h3>
       <button type="button" name="create" id="create">Create</button>
       <button type="button" name="read" id="read">Read</button>
       <button type="button" name="update" id="update">Update</button>
       <button type="button" name="delete" id="delete">Delete</button>
       <br>
       <br>
-      <p id="message">Message!</p>
       <br>
-      <br>
+      <div id="form">
+        <form id="form_pets" class="">
+          <fieldset>
+              <legend></legend>
+              Pet's name: <input type="text" id="input_name" name="input_name" placeholder="Name" size="40" class=""><br>
+              Pet's Age: <input type="text" id="input_age" name="input_age" placeholder="Age" size="10" class=""><br><br>
+              <input type="submit" name="save" id="save" value="Save">
+            </fieldset>
+          <p id="message">!!!</p>
+        </form>
+      </div>
     </div>
-
   </div>
-  <br>
   <br>
   <br>
   <br>
@@ -58,6 +55,7 @@
   </footer>
 
   <!-- Your JS script -->
+  <script src="https://npmcdn.com/parse@1.10.0/dist/parse.min.js"></script>
   <script src="scripts/main.js"></script>
 </body>
 

@@ -1,65 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="styles/main.css" />
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>MyApp</title>
+  <base href="/">
 
-  <body>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://npmcdn.com/parse/dist/parse.min.js"></script>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link href="assets/favicon.png" rel="shortcut icon">
+</head>
 
-    <div class="flex-container">
+<body>
 
-      <header>
-        <img src="assets/page-header.png" />
-      </header>
-
-      <nav class="nav">
-        <ul>
-          <li><a href="#">London</a></li>
-          <li><a href="#">Paris</a></li>
-        </ul>
-      </nav>
+  <div>
+    <header>
+      <img src="assets/page-header.png" />
+    </header>
 
 
-        <div id="main">
-          <h1>ToDo</h1>
-          <section>
-            <div class="input-container">
-              <input type="text" name="task" id="task" placeholder="Todo Task"/>
-            </div>
-            <div class="button-container">
-              <button type="button" name="saveTask" id="saveTask">Save Task</button>
-            </div>
-          </section>
-          <section>
-            <ul id="taskList">
-            </ul>
-          </section>
-          <section>
-            <p>
-              Completed Tasks
-            </p>
-            <ul id="completedTaskList">
-            </ul>
-          </section>
-          <div style="display:none" class="error">
-            <p>Looks like there was a problem saving the task</p>
-          </div>
-
-          <div style="display:none" class="success">
-            <p>Saved</p>
-          </div>
+    <div id="main">
+      <h1>ToDo List</h1>
+      <section>
+        <div class="input-container">
+          <input class="" type="text" name="task" id="task_input" placeholder="Todo Task" />
+          <br>
+          <input class="hide" type="text" name="task" id="task_edit" placeholder="Edit Task" />
         </div>
+        <div class="button-container">
+          <button type="button" name="saveTask" id="saveTask">Save Task</button>
+        </div>
+      </section>
+      <div class="button-container">
+        <button type="button" name="editTask" id="editTask">Edit Task</button>
+      </div>
+      <section>
+        <ul id="taskList">
+        </ul>
 
+        <table id="taskTable" border="1">
+        </table>
 
+      </section>
 
-      <footer>
-        <a atr href="http://www.back4app.com">
-        <img src="assets/logo-back4app-blue.svg" />
-        </a>
-      </footer>
+      <section>
+        <p>
+          Completed Tasks
+        </p>
+        <ul id="completedTaskList">
+        </ul>
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" checked="checked"/><i class="helper"></i>I'm the label from a checkbox
+          </label>
+        </div>
+        <div class="checkbox"></div>
+
+      </section>
+
+      <!-- Error messages -->
+      <div style="display:none" class="error">
+        <p>Looks like there was a problem saving the task</p>
+      </div>
+      <div style="display:none" class="success">
+        <p>Saved</p>
+      </div>
 
     </div>
 
+    <footer>
+      <a atr href="http://www.back4app.com">
+      <img src="assets/logo-back4app-blue.svg" />
+      </a>
+    </footer>
+
+    <!-- Your JS script -->
     <script src="scripts/main.js"></script>
-    </body>
+</body>
+
 </html>

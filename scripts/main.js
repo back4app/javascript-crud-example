@@ -164,6 +164,8 @@ function erasePet() {
       textAge = null;
       textName = null;
       textMessage = null;
+      inputName.value = null;
+      inputAge.value = null;
       updatePet.disabled = true;
       deletePet.disabled = true;
       readBtn();

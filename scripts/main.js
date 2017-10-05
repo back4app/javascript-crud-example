@@ -165,8 +165,8 @@ function erasePet() {
       textName = null;
       textMessage = null;
       updatePet.disabled = true;
-      deletePet.disabled = false;
-      read();
+      deletePet.disabled = true;
+      readBtn();
     },
     error: function(response, error) {
       alert('Erro: '+ error.message);

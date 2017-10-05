@@ -18,9 +18,11 @@ var formPets = document.getElementById("form_pets");
 var formTitle = document.getElementById("form_title");
 var submitPet = document.getElementById("submit");
 
+readPet.onclick = read;
+
 createPet.onclick = function () {
   getElements();
-  textMessage.innerHTML = "";
+  textMessage.innerHTML = null;
   form_title.innerHTML = "Create New Pet";
   submitPet.value = "Save";
   input_age.disabled = false;
@@ -28,11 +30,11 @@ createPet.onclick = function () {
   deletePet.disabled = true;
 }
 
-readPet.onclick = function () {
+function read () {
   getElements();
-  textMessage.innerHTML = "";
+  textMessage.innerHTML = null;
   form_title.innerHTML = "Search Pet";
-  input_age.value = "";
+  input_age.value = null;
   input_age.disabled = true;
   updatePet.disabled = true;
   deletePet.disabled = true;
@@ -49,21 +51,15 @@ updatePet.onclick = function () {
   deletePet.disabled = false;
   inputName.value = findPet.get("name");
   inputAge.value = findPet.get("age");
-  //considerando que ja fiz o retrieve acima:
-  //check retrieve
-  //set (update)
 }
 
 deletePet.onclick = function () {
   getElements();
-  textMessage.innerHTML = "";
+  textMessage.innerHTML = null;
   form_title.innerHTML = "Delete Pet";
   submitPet.value = "Delete";
-  console.log(petId);
-  //abre form input com botão submit
-  //considerando que ja fiz o retrieve acima:
-  //check retrieve
-  //delete
+  inputName.value = findPet.get("name");
+  inputAge.value = findPet.get("age");
 }
 
 submitPet.onclick = function () {
@@ -97,8 +93,8 @@ function newPet () {
 
   mypet.save(null, {
     success: function(mypet) {
-      inputName.value = "";
-      inputAge.value = "";
+      inputName.value = null;
+      inputAge.value = null;
       textMessage.innerHTML = 'Pet created with objectId: ' + mypet.id + ', Name: ' + mypet.get("name") + ', Age: ' + mypet.get("age");
       alert('Pet create with success!');
     },
@@ -114,7 +110,7 @@ function newPet () {
 function retrievePet (){
   findPet = new Pet ();
   query = new Parse.Query(Pet);
-  if (textName === "") {
+  if (textName == null) {
     alert("Please type a pet name to search");
   } else {
     query.equalTo("name", textName);
@@ -125,8 +121,8 @@ function retrievePet (){
           textMessage.innerHTML = 'Pet name: ' + mypet.get("name") + ', Age: ' + mypet.get("age");
           updatePet.disabled = false;
           deletePet.disabled = false;
-          inputName.value = "";
-          inputAge.value = "";
+          inputName.value = null;
+          inputAge.value = null;
         } else {
           alert("Nothing found, please try again");
         }
@@ -147,10 +143,32 @@ function changePet(){
   findPet.save(null, {
     success: function(response) {
       alert('Objeto salvo com objectId: ' + response.id);
-      textMessage.innerHTML = 'Pet name: ' + findPet.get("name") + ', Age: ' + findPet.get("age");
+      textMessage.innerHTML = 'Pet name: ' + response.get("name") + ', Age: ' + response.get("age");
+
     },
     error: function(response, error) {
       alert('Erro: ' + error.message);
+    }
+  });
+}
+
+function erasePet() {
+  findPet.set('name', textName);
+  findPet.set('age', textAge);
+
+  findPet.destroy({
+    success: function(response) {
+      alert('Objeto: apagado com sucesso');
+      findPet = null;
+      textAge = null;
+      textName = null;
+      textMessage = null;
+      updatePet.disabled = true;
+      deletePet.disabled = false;
+      read();
+    },
+    error: function(response, error) {
+      alert('Erro: '+ error.message);
     }
   });
 }

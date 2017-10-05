@@ -27,21 +27,21 @@
       <h3>Choose the action you want</h3>
       <button type="button" name="create" id="create">Create</button>
       <button type="button" name="read" id="read">Read</button>
-      <button type="button" name="update" id="update">Update</button>
-      <button type="button" name="delete" id="delete">Delete</button>
+      <button type="button" name="update" id="update" disabled>Update</button>
+      <button type="button" name="delete" id="delete" disabled>Delete</button>
       <br>
       <br>
       <br>
       <div id="form">
         <form id="form_pets" class="">
-          <fieldset>
-              <legend></legend>
-              Pet's name: <input type="text" id="input_name" name="input_name" placeholder="Name" size="40" class=""><br>
-              Pet's Age: <input type="text" id="input_age" name="input_age" placeholder="Age" size="10" class=""><br><br>
-              <input type="submit" name="save" id="save" value="Save">
+          <fieldset form="form_pets">
+              <legend id="form_title">Create New Pet</legend>
+              Pet's name: <input type="text" id="input_name" name="input_name" placeholder="Name" size="40"><br>
+              Pet's Age: <input type="text" id="input_age" name="input_age" placeholder="Age" size="10"><br><br>
+              <input type="button" name="save" id="submit" value="Save">
             </fieldset>
-          <p id="message">!!!</p>
         </form>
+        <p id="message">!!!</p>
       </div>
     </div>
   </div>

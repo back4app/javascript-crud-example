@@ -2,25 +2,24 @@ Parse.initialize("PhmFwoYApJIR6Kz8fO1jxtlUXEmNxz9CmwQlpYma"); //PASTE YOUR Back4
 Parse.serverURL = "https://parseapi.back4app.com/";
 Parse.javaScriptKey = "oBxOBGpgHLNCmXHbLA3xo5DLKNBMWshmGOXe25ku"; //PASTE YOUR Javascript KEY
 
-// EXPLICAR PARA NAO CRIAR CLASSE USER PORQUE ELA JÁ EXISTE = Parse.User()
-
-var mypet, textName, textAge, textMessage, query, findPet;
-
 var Pet = Parse.Object.extend("Pet");
+var mypet, textName, textAge, textMessage, query, findPet;
 
 //buttons and form
 var createPet = document.getElementById("create");
 var readPet = document.getElementById("read");
 var updatePet = document.getElementById("update");
 var deletePet = document.getElementById("delete");
-
 var formPets = document.getElementById("form_pets");
 var formTitle = document.getElementById("form_title");
 var submitPet = document.getElementById("submit");
 
-readPet.onclick = read;
+createPet.onclick = createBtn;
+readPet.onclick = readBtn;
+updatePet.onclick = updateBtn;
+deletePet.onclick = deleteBtn;
 
-createPet.onclick = function () {
+function createBtn () {
   getElements();
   textMessage.innerHTML = null;
   form_title.innerHTML = "Create New Pet";
@@ -30,7 +29,7 @@ createPet.onclick = function () {
   deletePet.disabled = true;
 }
 
-function read () {
+function readBtn () {
   getElements();
   textMessage.innerHTML = null;
   form_title.innerHTML = "Search Pet";
@@ -41,7 +40,7 @@ function read () {
   submitPet.value = "Search";
 }
 
-updatePet.onclick = function () {
+function updateBtn () {
   getElements();
   textMessage.innerHTML = findPet.id;
   form_title.innerHTML = "Update Pet";
@@ -53,7 +52,7 @@ updatePet.onclick = function () {
   inputAge.value = findPet.get("age");
 }
 
-deletePet.onclick = function () {
+function deleteBtn () {
   getElements();
   textMessage.innerHTML = null;
   form_title.innerHTML = "Delete Pet";
@@ -75,6 +74,7 @@ submitPet.onclick = function () {
   }
 }
 
+
 function getElements () {
   inputName = document.getElementById("input_name");
   inputAge = document.getElementById("input_age");
@@ -84,7 +84,7 @@ function getElements () {
 }
 
 
-//Creating/saving
+
 function newPet () {
   mypet = new Pet();
 
@@ -106,7 +106,7 @@ function newPet () {
 }
 
 
-//Retrieve
+
 function retrievePet (){
   findPet = new Pet ();
   query = new Parse.Query(Pet);
@@ -135,7 +135,7 @@ function retrievePet (){
 }
 
 
-//Update
+
 function changePet(){
   findPet.set('name', textName);
   findPet.set('age', textAge);
@@ -151,6 +151,7 @@ function changePet(){
     }
   });
 }
+
 
 function erasePet() {
   findPet.set('name', textName);

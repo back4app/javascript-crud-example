@@ -4,7 +4,7 @@ Parse.javaScriptKey = "oBxOBGpgHLNCmXHbLA3xo5DLKNBMWshmGOXe25ku"; //PASTE YOUR J
 
 // EXPLICAR PARA NAO CRIAR CLASSE USER PORQUE ELA JÁ EXISTE = Parse.User()
 
-var mypet, textName, textAge, textMessage, query, petId, petName, petAge;
+var mypet, textName, textAge, textMessage, query, findPet;
 
 var Pet = Parse.Object.extend("Pet");
 
@@ -32,6 +32,7 @@ readPet.onclick = function () {
   getElements();
   textMessage.innerHTML = "";
   form_title.innerHTML = "Search Pet";
+  input_age.value = "";
   input_age.disabled = true;
   updatePet.disabled = true;
   deletePet.disabled = true;
@@ -40,12 +41,14 @@ readPet.onclick = function () {
 
 updatePet.onclick = function () {
   getElements();
-  textMessage.innerHTML = "";
+  textMessage.innerHTML = findPet.id;
   form_title.innerHTML = "Update Pet";
   submitPet.value = "Update";
   input_age.disabled = false;
   updatePet.disabled = false;
   deletePet.disabled = false;
+  inputName.value = findPet.get("name");
+  inputAge.value = findPet.get("age");
   //considerando que ja fiz o retrieve acima:
   //check retrieve
   //set (update)
@@ -84,6 +87,7 @@ function getElements () {
   textMessage = document.getElementById("message");
 }
 
+
 //Creating/saving
 function newPet () {
   mypet = new Pet();
@@ -105,10 +109,11 @@ function newPet () {
   });
 }
 
+
 //Retrieve
 function retrievePet (){
+  findPet = new Pet ();
   query = new Parse.Query(Pet);
-  petId = "";
   if (textName === "") {
     alert("Please type a pet name to search");
   } else {
@@ -116,10 +121,8 @@ function retrievePet (){
     query.first({
       success: function(mypet) {
         if (mypet) {
-          petId = mypet.id;
-          petName = mypet.get("name");
-          petAge = mypet.get("age");
-          textMessage.innerHTML = 'Pet name: ' + petName + ', Age: ' + petAge;
+          findPet = mypet;
+          textMessage.innerHTML = 'Pet name: ' + mypet.get("name") + ', Age: ' + mypet.get("age");
           updatePet.disabled = false;
           deletePet.disabled = false;
           inputName.value = "";
@@ -135,7 +138,19 @@ function retrievePet (){
   }
 }
 
+
+//Update
 function changePet(){
-  inputName.value = petName;
-  inputAge.value = petAge;
+  findPet.set('name', textName);
+  findPet.set('age', textAge);
+
+  findPet.save(null, {
+    success: function(response) {
+      alert('Objeto salvo com objectId: ' + response.id);
+      textMessage.innerHTML = 'Pet name: ' + findPet.get("name") + ', Age: ' + findPet.get("age");
+    },
+    error: function(response, error) {
+      alert('Erro: ' + error.message);
+    }
+  });
 }

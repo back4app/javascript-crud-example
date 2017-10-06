@@ -1,6 +1,6 @@
 Parse.initialize("PhmFwoYApJIR6Kz8fO1jxtlUXEmNxz9CmwQlpYma"); //PASTE YOUR Back4App APPLICATION ID
-Parse.serverURL = "https://parseapi.back4app.com/";
 Parse.javaScriptKey = "oBxOBGpgHLNCmXHbLA3xo5DLKNBMWshmGOXe25ku"; //PASTE YOUR Javascript KEY
+Parse.serverURL = "https://parseapi.back4app.com/";
 
 var Pet = Parse.Object.extend("Pet");
 var mypet, textName, textAge, textMessage, query, findPet;

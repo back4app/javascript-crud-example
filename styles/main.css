@@ -1,0 +1,31 @@
+header {
+  background: white;
+  color: #208AEC;
+}
+
+footer {
+  background: #f2f2f2;
+  color: black;
+}
+
+body {
+  background: #eee;
+  text-align: center;
+  padding: 0 25px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  margin: auto;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 10px 50px;
+}
+
+.hide {
+  visibility: hidden;
+}

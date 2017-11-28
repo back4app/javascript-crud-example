@@ -5,7 +5,7 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 var Pet = Parse.Object.extend("Pet");
 
 // Pass the name you want to search on the database
-textName = "myName";
+var textName = "myName";
 
 read();
 

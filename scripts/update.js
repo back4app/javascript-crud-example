@@ -5,8 +5,8 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 var Pet = Parse.Object.extend("Pet");
 
 // Test with different values of name and age and see the ParseDashboard to see the changes
-textName = "myName";
-textAge = 15;
+var textName = "myName";
+var textAge = 15;
 
 readThenUpdate();
 

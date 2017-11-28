@@ -5,7 +5,7 @@ Parse.serverURL = "https://parseapi.back4app.com/";
 var Pet = Parse.Object.extend("Pet");
 
 // Pass the name of the pet you want to delete
-textName = "myName";
+var textName = "myName";
 
 readThenDelete();
 

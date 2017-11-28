@@ -94,9 +94,6 @@ function updatePet() {
 }
 
 function deletePet() {
-    findPet.set('name', textName);
-    findPet.set('age', textAge);
-
     findPet.destroy({
         success: function(response) {
             alert('Pet erased successfully');
